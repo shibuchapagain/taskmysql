@@ -38,16 +38,16 @@ router.get("/getAllActions", async (req, res) => {
 router.get("/findCount/:id", async (req, res) => {
   const productId = +req.params.id;
   const type = req.query?.type; // like, vanzare, vizita
-  const currentDate = moment();
-  const oneWeekAgo = moment().subtract(1, "week");
+  //   const currentDate = moment();
+  //   const oneWeekAgo = moment().subtract(1, "week");
   try {
     const count = await Actions.count({
       where: {
         type: type,
         prod: productId,
-        currentDate: {
-          [Op.between]: [oneWeekAgo, currentDate],
-        },
+        // currentDate: {
+        //   [Op.between]: [oneWeekAgo, currentDate],
+        // },
       },
     });
     res.json({
